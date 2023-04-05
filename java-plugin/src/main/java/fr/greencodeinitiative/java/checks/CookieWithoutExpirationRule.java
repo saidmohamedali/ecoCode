@@ -1,10 +1,8 @@
 package fr.greencodeinitiative.java.checks;
 
-import org.sonar.java.model.expression.NewArrayTreeImpl;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.*;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,12 +31,16 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
     }
 
     private MethodInvocationTree getMethodInvocation(MethodTree tree) {
-        List<Tree> children = tree.getChildren();
+     /*   List<Tree> children = tree.getChildren();
         for (Tree child : children) {
             if (child instanceof MethodInvocationTree) {
                 return (MethodInvocationTree) child;
             }
-        }
+        }*/
+
+   //     if (COOKIE_CLASS_NAME.matches(tree)) {
+            reportIssue(tree, "");
+     //   }
         return null;
     }
 

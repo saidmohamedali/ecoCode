@@ -59,6 +59,5 @@ public class AvoidRegexPatternNotStatic extends IssuableSubscriptionVisitor {
                 super.visitMethodInvocation(tree);
             }
         }
-
     }
 }
