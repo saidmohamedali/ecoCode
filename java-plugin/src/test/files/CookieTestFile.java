@@ -4,31 +4,31 @@ import javax.servlet.http.Cookie;
 
 public class CookieTest {
 
+	public String testKo(String[] strings) {
 
-    public String testKo(String[] strings) {
+		//Integer test = new Integer();
+		Cookie c = new Cookie("id", "674684641");
+	}
 
+	public String testNonReg(String[] strings) {
 
-        Integer test =  new Integer() ;
-        Cookie C = new Cookie("id","674684641"); // Noncompliant {{Use System.arraycopy to copy arrays}}
+		//Integer test = new Integer();
+		Cookie c = new Cookie("id", "674684641");
 
-        // set the validity 
+		// set the validity 
+		c.setMaxAge(24 * 3600);
+		// send cookie via HTTP
+		res.addCookie(c);
+	}
+	
+	public String testNonReg(String[] strings) {
 
-    }
+		//Integer test = new Integer();
+		Cookie c = new Cookie("id", "674684641");
+		setDuration(c);
+	}
 
-
-    public String testNonReg(String[] strings) {
-
-
-        Integer test =  new Integer() ;
-
-
-        Cookie C = new Cookie("id","674684641");
-
-       // set the validity 
-        C.setMaxAge(24*3600);
-        // send cookie via HTTP
-        res.addCookie(C);
-    }
-
-
+	private void setDuration(Cookie c) {
+		c.setMaxAge(24 * 3600);
+	}
 }
