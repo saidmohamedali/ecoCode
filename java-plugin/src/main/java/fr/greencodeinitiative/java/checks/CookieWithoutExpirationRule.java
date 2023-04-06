@@ -4,6 +4,7 @@ package fr.greencodeinitiative.java.checks;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.java.model.declaration.MethodTreeImpl;
+import org.sonar.java.model.expression.MethodInvocationTreeImpl;
 import org.sonar.java.model.expression.NewArrayTreeImpl;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.*;
@@ -51,23 +52,13 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
 
     private MethodInvocationTree getMethodInvocation(Tree tree) {
 
-      List<Tree> children = ((MethodTreeImpl)tree).children();
+      List<Tree> children = ((MethodInvocationTreeImpl)tree).children();
       for (Tree child : children) {
         if (child instanceof MethodInvocationTree) {
          return (MethodInvocationTree) child;
         }
       }
 
-        /*if (tree.is(Tree.Kind.EXPRESSION_STATEMENT)) {
-
-            ExpressionTree children = ((AssignmentExpressionTree)tree).variable();
-            if(children.is(Tree.Kind.IDENTIFIER))
-            {
-                IdentifierTree current = (IdentifierTree) children;
-                current.name().equals("Cookie");
-                 return (MethodInvocationTree) tree;
-            }
-        }*/
      return null;
  }
 
@@ -84,7 +75,7 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
 
   
 
-         private void checkCookieExpiration(MethodInvocationTree methodInvocation) {
+  private void checkCookieExpiration(MethodInvocationTree methodInvocation) {
      List<ExpressionTree> arguments = methodInvocation.arguments();
      for (ExpressionTree argument : arguments) {
          if (argument.symbolType().fullyQualifiedName().equals(COOKIE_CLASS_NAME)) {
@@ -97,10 +88,6 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
 
     private void checkCookieExpirationArgument(ExpressionTree argument) {
      boolean hasExpiration = false;
-
-
-
-  
 
      if (!hasExpiration) {
          reportIssue(argument, "Le cookie est créé sans date d'expiration.");
