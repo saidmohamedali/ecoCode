@@ -1,4 +1,4 @@
-## Titre
+## Cookies: définir une durée de rétention
 
 ### Identifiants
 
@@ -16,7 +16,7 @@
 
 | Degré de priorité |      Mise en oeuvre       |  Impact écologique    | 
 |-------------------|:-------------------------:|:---------------------:|
-|        |                  |                   | 
+|  3      |        4          |        1           | 
 
 |Ressources Economisées                                      |
 |:----------------------------------------------------------:|
@@ -24,7 +24,7 @@
 
 ### Description
 
-...
+De nombreux cookies sont stockés par les sites internet sur les terminaux des clients. Ces derniers 
 
 ### Exemple
 
